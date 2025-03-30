@@ -1,0 +1,321 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* Image background container */
+.image-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero.loaded .image-background {
+  opacity: 1;
+}
+
+/* Background image styles */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Image overlay */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(27, 70, 32, 0.7), rgba(27, 70, 32, 0.85));
+  z-index: 2;
+}
+
+/* Video background container - keeping for reference but not used */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  opacity: 1;
+  overflow: hidden;
+  pointer-events: none;
+  display: none; /* Hide video elements */
+}
+
+/* Video error message */
+.video-error-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(27, 70, 32, 0.8);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.video-error-message p {
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  text-align: center;
+  padding: 0 2rem;
+  margin-top: 90px; /* Add margin to account for navbar height */
+}
+
+.hero h1 {
+  color: #ffffff;
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+  letter-spacing: -0.02em;
+}
+
+.hero h2 {
+  color: #f0f0f0;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.primary-btn {
+  padding: 1.2rem 2.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-btn:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.primary-btn:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.primary-btn:hover:after {
+  left: 100%;
+}
+
+.secondary-btn {
+  padding: 1.2rem 2.8rem;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease-out 0.9s forwards;
+  opacity: 0;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.scroll-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator span {
+  font-size: 1.8rem;
+  animation: bounce 2s infinite;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator:hover {
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 0;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    margin-top: 110px; /* Adjust margin for mobile navbar height */
+  }
+  
+  .hero h1 {
+    font-size: 2.4rem;
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+  
+  .primary-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+    padding: 1rem 1.8rem;
+  }
+  
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+/* Additional media query for smaller mobile screens */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.1rem;
+    line-height: 1.3;
+  }
+  
+  .hero h2 {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.fallback-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.fallback-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Make sure the video only appears in the hero section */
+section:not(#home) {
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+}

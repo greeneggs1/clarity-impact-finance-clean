@@ -1,0 +1,147 @@
+/* Resources Section */
+.resources {
+  padding: 4rem 0.5rem;
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.resources-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 98%;
+}
+
+.resources-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.resources-header h1 {
+  color: #1B4620;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.resources-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #E67E45;
+  border-radius: 3px;
+}
+
+.resources-header p {
+  color: #475569;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #1B4620;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.airtable-embed-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.airtable-embed {
+  transition: opacity 0.3s ease;
+  width: 100%;
+}
+
+/* Find a CDFI Section */
+.find-cdfi-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.find-cdfi-section h2 {
+  color: #1B4620;
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.find-cdfi-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: #E67E45;
+  border-radius: 3px;
+}
+
+.find-cdfi-section p {
+  color: #475569;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 1.5rem auto 2rem;
+  line-height: 1.6;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .resources {
+    padding: 3rem 0.25rem;
+  }
+  
+  .resources-header h1 {
+    font-size: 2rem;
+  }
+  
+  .resources-header p {
+    font-size: 1.1rem;
+  }
+  
+  .airtable-embed-container {
+    border-radius: 4px;
+  }
+  
+  .find-cdfi-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .find-cdfi-section p {
+    font-size: 1.1rem;
+  }
+}
