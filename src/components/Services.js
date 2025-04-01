@@ -58,7 +58,7 @@ const Services = () => {
       setActiveImageIndex(prevIndex => 
         (prevIndex + 1) % communityImagePaths.gallery.length
       );
-    }, 4000);
+    }, 5000); // Increased to 5 seconds for a more comfortable viewing experience
     
     return () => clearInterval(interval);
   }, []);

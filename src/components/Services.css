@@ -72,14 +72,12 @@ section#services.services {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1s ease;
-  transform: scale(1.1);
+  transition: opacity 1.5s ease-in-out;
 }
 
 .impact-image.active {
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 1s ease, transform 7s ease;
+  transition: opacity 1.5s ease-in-out;
 }
 
 .impact-text {
